@@ -1,0 +1,5 @@
+<h1>Records</h1>
+
+<% @records.each do |record| %>
+    <%= record.id %>. <%= link_to record.question, new_record_path %><br>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  data: 
+  results: MyString
+  average: MyString
+
+two:
+  user: two
+  data: 
+  results: MyString
+  average: MyString

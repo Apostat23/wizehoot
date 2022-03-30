@@ -1,0 +1,16 @@
+<% @record.set_question params[:subject] %>
+<h1><%= params[:subject] %></h1>
+
+<%= turbo_stream_from @record %>
+<%= render @record %>
+
+
+<%= form_with url: record_path(@record), method: :get do |form| %>
+  <%= @record.id %>. <%= @record.question %><br> 
+  <%= form.hidden_field :question, value: @record.question %>
+  <%= form.hidden_field :answer, value: @record.question %>
+  <%= form.radio_button :user_answer, @record.data['option_1'], required: true %> <%= @record.data['option_1'] %><br>
+  <%= form.radio_button :user_answer, @record.data['option_2'] %> <%= @record.data['option_2'] %><br>
+  <%= form.radio_button :user_answer, @record.data['option_3'] %> <%= @record.data['option_3'] %><br><br>
+  <%= form.submit "Answer", data: {} %>
+<% end %>

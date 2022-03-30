@@ -1,0 +1,19 @@
+<h1><%= @record.data['subject'] %></h1>
+
+<%= turbo_stream_from @record %>
+<%= render @record %>
+
+<% if params['user_answer'].present? %>
+  <%= @record.id %>. <%= @record.question %><br>
+  <%= @record.answer %><br>
+  <%= @record.result = params['user_answer'] == @record.answer ? :correct : :incorrect %><br>
+  <% @record.data['option_1'] %>
+  <% @record.data['option_2'] %>
+  <% @record.data['option_3'] %>
+  <% @record.data['user_answer'] = params['user_answer'] %><br>
+  <% @record.save! %>
+<% else %>
+  <%= @record.result %>
+<% end %>
+
+<%= link_to 'Next Question', new_record_url(subject: @record.data['subject']) %>

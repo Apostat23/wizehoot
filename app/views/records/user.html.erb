@@ -1,0 +1,13 @@
+<% turbo_stream_from @records %>
+
+<h1><%= current_user.email %></h1>
+<%= turbo_frame_tag 'records' do %>
+  <% average = Average.create! user_id: current_user.id %>
+  <% results = [] %>
+  <% @records.each {|record| results.push record.result} %>
+  <% average.results = results.tally %>
+  <% average.save! %>
+  <%= average.results %>
+<% end %>
+
+<%= render @records, records: @records %>
